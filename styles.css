@@ -1,0 +1,48 @@
+body {
+  margin: 0 10px 0 10px;
+  padding: 0;
+  background-color: #cfffc5;
+}
+
+#container {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1.5fr 0.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". title title ."
+    "meteor-info meteor-info map map"
+    "meteor-info meteor-info map map"
+    "meteor-info meteor-info map map"
+    "footer footer . .";
+}
+
+#title {
+  grid-area: title;
+  font-size: 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#meteor-info {
+  grid-area: meteor-info;
+  overflow: scroll;
+  border: 1px solid black;
+  background-color: #ffffff;
+}
+
+#map {
+  grid-area: map;
+  height: 100%;
+}
+
+#footer {
+    grid-area: footer;
+    display: flex;
+    align-items: center;
+}
