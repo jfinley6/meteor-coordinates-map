@@ -32,14 +32,50 @@ function createTiles(meteorData) {
     marker.addTo(map)
     marker.setOpacity(0)
 
-    console.log(meteorData)
-    // const sortedMeteorData = meteorData.sort((a, b) => Number(b.mass) - Number(a.mass));
+    const selector = document.querySelector("#selector")
+    selector.addEventListener('change', () => {
+        switch (selector.value) {
+            case "nameA-Z":
+                const nameAZ = meteorData.sort((a, b) => a.name.localeCompare(b.name))
+                doSomething(nameAZ, map, marker)
+                break;
+            case "nameZ-A":
+                const nameZA = meteorData.sort((a, b) => b.name.localeCompare(a.name))
+                doSomething(nameZA, map, marker)
+                break
+            case "massSmallest":
+                const massSmallestToLargest = meteorData.sort((a, b) => Number(a.mass) - Number(b.mass));
+                doSomething(massSmallestToLargest, map, marker)
+                break
+            case "massLargest":
+                const massLargestToSmallest = meteorData.sort((a, b) => Number(b.mass) - Number(a.mass));
+                doSomething(massLargestToSmallest, map, marker)
+                break
+            default:
+
+        }
+
+    })
+
+
+    doSomething(meteorData, map, marker)
+
+}
+
+function doSomething(meteorData, map, marker) {
+    const divCheck = document.getElementsByClassName("meteor-data")
+    if (typeof divCheck == 'object') {
+        for (let i = divCheck.length - 1; i >= 0; --i) {
+            divCheck[i].remove();
+        }
+    } 
+    
     //For each API index, show the information on page
     for (item of meteorData) {
         if (item.reclat === undefined) {
             continue;
-        } 
-        
+        }
+
         const meteorInfo = document.querySelector(".meteor-info")
         const div = document.createElement("div")
         div.classList.add("meteor-data")

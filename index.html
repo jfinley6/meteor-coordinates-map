@@ -19,8 +19,17 @@
     <body>
         <div id="container">
             <h1 id="title">Meteorite Landing <br>Information</h1>
+            <form>
+                <label for="selector">Sorting Options</label>
+                <select id="selector" name="selector">
+                    <option id="option0" value="nameA-Z" selected=true>Name: A-Z </option>
+                    <option id="option1" value="nameZ-A">Name: Z-A </option>
+                    <option id="option1" value="massSmallest">Mass: Smallest to Largest </option>
+                    <option id="option1" value="massLargest">Mass: Largest to Smallest</option>
+                </select>
+            </form>
             <div class="meteor-info">
-              
+
             </div>
             <div id="map"></div>
             <div id="footer"><strong>John Finley / Flatiron / SE Phase-1 / 2022</strong></div>
