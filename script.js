@@ -45,10 +45,12 @@ function createTiles(meteorData) {
                 doSomething(nameZA, map, marker)
                 break
             case "massSmallest":
+                const massAZ = meteorData.sort((a, b) => a.name.localeCompare(b.name))
                 const massSmallestToLargest = meteorData.sort((a, b) => Number(a.mass) - Number(b.mass));
                 doSomething(massSmallestToLargest, map, marker)
                 break
             case "massLargest":
+                const massZA = meteorData.sort((a, b) => a.name.localeCompare(b.name))
                 const massLargestToSmallest = meteorData.sort((a, b) => Number(b.mass) - Number(a.mass));
                 doSomething(massLargestToSmallest, map, marker)
                 break
