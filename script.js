@@ -31,10 +31,15 @@ function createTiles(meteorData) {
     marker = L.marker([0, 0], 1)
     marker.addTo(map)
     marker.setOpacity(0)
-    console.log(meteorData);
+
+    console.log(meteorData)
+    // const sortedMeteorData = meteorData.sort((a, b) => Number(b.mass) - Number(a.mass));
     //For each API index, show the information on page
     for (item of meteorData) {
-
+        if (item.reclat === undefined) {
+            continue;
+        } 
+        
         const meteorInfo = document.querySelector(".meteor-info")
         const div = document.createElement("div")
         div.classList.add("meteor-data")
@@ -70,6 +75,9 @@ function createTiles(meteorData) {
         tr2.appendChild(td4)
         td3.textContent = "Mass:"
         td4.innerHTML = `<b>${item.mass}g</b>`
+        if (item.mass === undefined) {
+            td4.innerHTML = "<b>N/A</b>"
+        }
 
         tbody.appendChild(tr3)
         tr3.appendChild(td5)
