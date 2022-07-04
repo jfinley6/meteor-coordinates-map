@@ -8,6 +8,7 @@ let meteorData = () => {
     fetch("https://data.nasa.gov/resource/gh4g-9sfh.json")
         .then(res => res.json())
         .then(data => {
+            data = data.sort((a, b) => a.name.localeCompare(b.name))
             createTiles(data)
         })
 }
@@ -69,6 +70,7 @@ function doSomething(meteorData, map, marker) {
             divCheck[i].remove();
         }
     } 
+
     
     //For each API index, show the information on page
     for (item of meteorData) {
